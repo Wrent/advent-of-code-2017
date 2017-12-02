@@ -1,5 +1,6 @@
-package com.akucera.codeadvent01;
+package com.akucera.codeadvent.advent01;
 
+import com.akucera.codeadvent.advent01.CaptchaSolver;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package com.akucera.codeadvent01;
+package com.akucera.codeadvent.advent01;
 
 import org.springframework.stereotype.Component;
 
@@ -23,4 +23,5 @@ public class CaptchaSolver {
 
         return sum;
     }
+
 }

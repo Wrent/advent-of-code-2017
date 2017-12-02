@@ -1,4 +1,4 @@
-package com.akucera.codeadvent01;
+package com.akucera.codeadvent;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class CodeAdvent01ApplicationTests {
+public class CodeAdventApplicationTests {
 
 	@Test
 	public void contextLoads() {
