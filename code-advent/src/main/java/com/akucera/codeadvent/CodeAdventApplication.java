@@ -43,5 +43,7 @@ public class CodeAdventApplication implements CommandLineRunner {
 
 		System.out.println("Spreadsheet result is:");
 		System.out.println(checksum.calculateChecksum(spreadsheetInput));
+		System.out.println("Divisible spreadsheet result is:");
+		System.out.println(checksum.calculateDivisibleChecksum(spreadsheetInput));
 	}
 }
