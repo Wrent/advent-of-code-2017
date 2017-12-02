@@ -24,4 +24,13 @@ public class CaptchaSolverTest {
         assertThat(solver.solve("1234"), is(0));
         assertThat(solver.solve("91212129"), is(9));
     }
+
+    @Test
+    public void testProvidedValuesForHalfway() throws Exception {
+        assertThat(solver.solveHalfWay("1212"), is(6));
+        assertThat(solver.solveHalfWay("1221"), is(0));
+        assertThat(solver.solveHalfWay("123425"), is(4));
+        assertThat(solver.solveHalfWay("123123"), is(12));
+        assertThat(solver.solveHalfWay("12131415"), is(4));
+    }
 }
