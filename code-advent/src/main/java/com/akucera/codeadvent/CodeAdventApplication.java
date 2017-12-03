@@ -51,6 +51,8 @@ public class CodeAdventApplication implements CommandLineRunner {
 		final int spiralInput = 312051;
 		System.out.println("Spiral data result is:");
 		System.out.println(spiralData.calculatePath(spiralInput));
+		System.out.println("Sum spiral data result is:");
+		System.out.println(spiralData.greaterThanSum(spiralInput));
 
 	}
 }
