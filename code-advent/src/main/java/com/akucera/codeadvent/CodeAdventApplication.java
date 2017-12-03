@@ -2,6 +2,7 @@ package com.akucera.codeadvent;
 
 import com.akucera.codeadvent.advent01.CaptchaSolver;
 import com.akucera.codeadvent.advent02.SpreadsheetChecksum;
+import com.akucera.codeadvent.advent03.SpiralData;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -45,5 +46,11 @@ public class CodeAdventApplication implements CommandLineRunner {
 		System.out.println(checksum.calculateChecksum(spreadsheetInput));
 		System.out.println("Divisible spreadsheet result is:");
 		System.out.println(checksum.calculateDivisibleChecksum(spreadsheetInput));
+
+		final SpiralData spiralData = new SpiralData();
+		final int spiralInput = 312051;
+		System.out.println("Spiral data result is:");
+		System.out.println(spiralData.calculatePath(spiralInput));
+
 	}
 }

@@ -1,6 +1,5 @@
 package com.akucera.codeadvent.advent01;
 
-import com.sun.org.apache.xalan.internal.xsltc.dom.SimpleResultTreeImpl;
 import org.springframework.stereotype.Component;
 
 @Component
