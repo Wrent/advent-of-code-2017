@@ -5,6 +5,7 @@ import com.akucera.codeadvent.advent02.SpreadsheetChecksum;
 import com.akucera.codeadvent.advent03.SpiralData;
 import com.akucera.codeadvent.advent04.PassPhraseChecker;
 import com.akucera.codeadvent.advent05.RelativeJumper;
+import com.akucera.codeadvent.advent06.MemoryBlocks;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -1653,5 +1654,12 @@ public class CodeAdventApplication implements CommandLineRunner {
 		System.out.println(jumper.escapeMaze(jumpsInput));
 		System.out.println("Relative jumper second part is:");
 		System.out.println(jumper.escapeComplicatedMaze(jumpsInput));
+
+		final String memoryBlocksInput = "2\t8\t8\t5\t4\t2\t3\t1\t5\t5\t1\t2\t15\t13\t5\t14";
+		final MemoryBlocks memoryBlocks = new MemoryBlocks();
+		System.out.println("Memory blocks result is: ");
+		System.out.println(memoryBlocks.countBlockJumps(memoryBlocksInput));
+		System.out.println("Loop size result is: ");
+		System.out.println(memoryBlocks.countLoopSize(memoryBlocksInput));
 	}
 }
