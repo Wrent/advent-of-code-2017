@@ -35,7 +35,6 @@ public class ProgramTower {
 
             Integer dif = getDifference(program.getChildren());
             if (dif != 0) {
-                System.out.println("calculated difference "+ dif);
                 if (this.difference == null) {
                     this.difference = dif;
                 }
@@ -57,7 +56,6 @@ public class ProgramTower {
 
         for (int i = 1; i < programs.size(); i++) {
             if (!Objects.equals(weight, programs.get(i).sumWeight)) {
-                System.out.println(programs);
                 if (!Objects.equals(weight, programs.get((i + 1) % (programs.size() - 1)).sumWeight)) {
                     return programs.get(0).getWeight() - Math.abs(weight - programs.get(i).sumWeight);
                 } else {
