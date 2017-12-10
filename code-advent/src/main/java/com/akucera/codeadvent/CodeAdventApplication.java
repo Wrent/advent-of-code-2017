@@ -9,6 +9,7 @@ import com.akucera.codeadvent.advent06.MemoryBlocks;
 import com.akucera.codeadvent.advent07.ProgramTower;
 import com.akucera.codeadvent.advent08.RegisterInstructions;
 import com.akucera.codeadvent.advent09.GarbageStream;
+import com.akucera.codeadvent.advent10.KnotHash;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -4627,5 +4628,12 @@ public class CodeAdventApplication implements CommandLineRunner {
 		System.out.println(garbageStream.getScoreOfGroups(garbageStreamInput));
 		System.out.println("garbage count is:");
 		System.out.println(garbageStream.countGarbage(garbageStreamInput));
+
+		final String knotInput = "46,41,212,83,1,255,157,65,139,52,39,254,2,86,0,204";
+		final KnotHash knotHash = new KnotHash();
+		System.out.println("Knot result is:");
+		System.out.println(knotHash.getHash(256, knotInput));
+		System.out.println("String hash is:");
+		System.out.println(knotHash.getStringHash(256, knotInput));
 	}
 }
