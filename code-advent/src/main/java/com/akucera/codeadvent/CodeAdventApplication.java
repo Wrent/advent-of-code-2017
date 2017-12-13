@@ -12,6 +12,7 @@ import com.akucera.codeadvent.advent09.GarbageStream;
 import com.akucera.codeadvent.advent10.KnotHash;
 import com.akucera.codeadvent.advent11.HexagonGrid;
 import com.akucera.codeadvent.advent12.PipeCommunication;
+import com.akucera.codeadvent.advent13.Firewall;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6650,5 +6651,54 @@ public class CodeAdventApplication implements CommandLineRunner {
 		System.out.println(pipeCommunication.countProgramsWithZero(pipeInput));
 		System.out.println("Group count is:");
 		System.out.println(pipeCommunication.countNumberOfGroups(pipeInput));
+
+		final String firewallInput = "0: 3\n" +
+				"1: 2\n" +
+				"2: 5\n" +
+				"4: 4\n" +
+				"6: 6\n" +
+				"8: 4\n" +
+				"10: 8\n" +
+				"12: 8\n" +
+				"14: 6\n" +
+				"16: 8\n" +
+				"18: 6\n" +
+				"20: 6\n" +
+				"22: 8\n" +
+				"24: 12\n" +
+				"26: 12\n" +
+				"28: 8\n" +
+				"30: 12\n" +
+				"32: 12\n" +
+				"34: 8\n" +
+				"36: 10\n" +
+				"38: 9\n" +
+				"40: 12\n" +
+				"42: 10\n" +
+				"44: 12\n" +
+				"46: 14\n" +
+				"48: 14\n" +
+				"50: 12\n" +
+				"52: 14\n" +
+				"56: 12\n" +
+				"58: 12\n" +
+				"60: 14\n" +
+				"62: 14\n" +
+				"64: 12\n" +
+				"66: 14\n" +
+				"68: 14\n" +
+				"70: 14\n" +
+				"74: 24\n" +
+				"76: 14\n" +
+				"80: 18\n" +
+				"82: 14\n" +
+				"84: 14\n" +
+				"90: 14\n" +
+				"94: 17";
+		final Firewall firewall = new Firewall(firewallInput);
+		System.out.println("firewall severity is:");
+		System.out.println(firewall.countSeverity(0));
+		System.out.println("minimal delay is");
+		System.out.println(firewall.countMinimalDelay());
 	}
 }
