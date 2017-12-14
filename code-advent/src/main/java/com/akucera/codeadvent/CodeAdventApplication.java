@@ -13,6 +13,7 @@ import com.akucera.codeadvent.advent10.KnotHash;
 import com.akucera.codeadvent.advent11.HexagonGrid;
 import com.akucera.codeadvent.advent12.PipeCommunication;
 import com.akucera.codeadvent.advent13.Firewall;
+import com.akucera.codeadvent.advent14.DiskDefragmenter;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6700,5 +6701,12 @@ public class CodeAdventApplication implements CommandLineRunner {
 		System.out.println(firewall.countSeverity(0));
 		System.out.println("minimal delay is");
 		System.out.println(firewall.countMinimalDelay());
+
+		final String diskDefragmenterInput = "ljoxqyyw";
+		final DiskDefragmenter diskDefragmenter = new DiskDefragmenter();
+		System.out.println("Full blocks on disc:");
+		System.out.println(diskDefragmenter.countFullBlocks(diskDefragmenterInput));
+		System.out.println("Regions on disc:");
+		System.out.println(diskDefragmenter.countRegions(diskDefragmenterInput));
 	}
 }
