@@ -14,6 +14,8 @@ import com.akucera.codeadvent.advent11.HexagonGrid;
 import com.akucera.codeadvent.advent12.PipeCommunication;
 import com.akucera.codeadvent.advent13.Firewall;
 import com.akucera.codeadvent.advent14.DiskDefragmenter;
+import com.akucera.codeadvent.advent15.Generator;
+import com.akucera.codeadvent.advent15.Generators;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6708,5 +6710,11 @@ public class CodeAdventApplication implements CommandLineRunner {
 		System.out.println(diskDefragmenter.countFullBlocks(diskDefragmenterInput));
 		System.out.println("Regions on disc:");
 		System.out.println(diskDefragmenter.countRegions(diskDefragmenterInput));
+
+		final Generators generators = new Generators();
+		System.out.println("generators result is:");
+		//System.out.println(generators.getFinalCount("591", "393"));
+		System.out.println("generators picky result is:");
+		System.out.println(generators.getPickyCount("591", "393"));
 	}
 }
