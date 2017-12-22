@@ -99,7 +99,7 @@ public class DuetState {
     }
 
     public void recover() {
-        if (played.size() > 0) 
+        if (played.size() > 0)
         recovered.add(played.get(played.size() - 1));
     }
 
