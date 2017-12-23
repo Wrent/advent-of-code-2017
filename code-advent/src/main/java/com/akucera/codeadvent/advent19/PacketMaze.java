@@ -1,6 +1,8 @@
 package com.akucera.codeadvent.advent19;
 
 
+import com.akucera.codeadvent.advent11.Position;
+
 public class PacketMaze {
 
     private String letters;
@@ -53,11 +55,41 @@ public class PacketMaze {
             Pos move(Pos pos) {
                 return new Pos(pos.row + 1, pos.col);
             }
+
+            @Override
+            public Direction turnRight() {
+                return WEST;
+            }
+
+            @Override
+            public Direction turnLeft() {
+                return EAST;
+            }
+
+            @Override
+            public Position move(Position current) {
+                return new Position(current.x, current.y + 1);
+            }
         },
         NORTH {
             @Override
             Pos move(Pos pos) {
                 return new Pos(pos.row - 1, pos.col);
+            }
+
+            @Override
+            public Direction turnRight() {
+                return EAST;
+            }
+
+            @Override
+            public Direction turnLeft() {
+                return WEST;
+            }
+
+            @Override
+            public Position move(Position current) {
+                return new Position(current.x, current.y - 1);
             }
         },
         EAST {
@@ -65,11 +97,41 @@ public class PacketMaze {
             Pos move(Pos pos) {
                 return new Pos(pos.row, pos.col + 1);
             }
+
+            @Override
+            public Direction turnRight() {
+                return SOUTH;
+            }
+
+            @Override
+            public Direction turnLeft() {
+                return NORTH;
+            }
+
+            @Override
+            public Position move(Position current) {
+                return new Position(current.x + 1, current.y);
+            }
         },
         WEST {
             @Override
             Pos move(Pos pos) {
                 return new Pos(pos.row, pos.col - 1);
+            }
+
+            @Override
+            public Direction turnRight() {
+                return NORTH;
+            }
+
+            @Override
+            public Direction turnLeft() {
+                return SOUTH;
+            }
+
+            @Override
+            public Position move(Position current) {
+                return new Position(current.x - 1, current.y);
             }
         };
 
@@ -88,6 +150,12 @@ public class PacketMaze {
             }
             return null;
         }
+
+        public abstract Direction turnRight();
+
+        public abstract Direction turnLeft();
+
+        public abstract Position move(Position current);
     }
 
     public static class Pos {

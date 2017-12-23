@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HexagonGrid {
-    public int getShortestPath(String s) {
+    public long getShortestPath(String s) {
         List<Instruction> instructions = getInstructions(s);
 
         Position position = new Position(0, 0);
@@ -15,14 +15,14 @@ public class HexagonGrid {
         return getPositionDistance(position);
     }
 
-    public int getFurthestDistance(String s) {
+    public long getFurthestDistance(String s) {
         List<Instruction> instructions = getInstructions(s);
 
         Position position = new Position(0, 0);
-        int distance = 0;
+        long distance = 0;
         for (Instruction instruction : instructions) {
             position = instruction.move(position);
-            int calcDistance = getPositionDistance(position);
+            long calcDistance = getPositionDistance(position);
             if (calcDistance > distance) {
                 distance = calcDistance;
             }
@@ -40,9 +40,9 @@ public class HexagonGrid {
         return instructions;
     }
 
-    private int getPositionDistance(Position position) {
-        int xDiff = Math.abs(position.x);
-        int yDiff = Math.abs(position.y) - xDiff;
+    private long getPositionDistance(Position position) {
+        long xDiff = Math.abs(position.x);
+        long yDiff = Math.abs(position.y) - xDiff;
 
         return xDiff + yDiff / 2;
     }

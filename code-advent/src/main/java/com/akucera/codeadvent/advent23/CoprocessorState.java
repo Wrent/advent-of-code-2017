@@ -1,25 +1,24 @@
-package com.akucera.codeadvent.advent18;
+package com.akucera.codeadvent.advent23;
+
 
 import java.util.*;
 
-public class DuetState {
+public class CoprocessorState {
     private final List<Instruction> instructionList = new ArrayList<>();
     private final Map<String, Long> registers = new HashMap<>();
-    private final List<Long> played = new ArrayList<>();
-    private final List<Long> recovered = new ArrayList<>();
 
     private int current = 0;
     private boolean jumped = false;
     private long id = 0;
     private boolean stopped = false;
 
-    public DuetState(String input, long i) {
+    long mulCnt = 0;
+    public CoprocessorState(String input, long i) {
         this(input);
         id = i;
-        setToRegister("p", i);
     }
 
-    public DuetState(String input) {
+    public CoprocessorState(String input) {
         String[] lines = input.split("\n");
         for (String line : lines) {
             StringTokenizer tokenizer = new StringTokenizer(line);
@@ -28,9 +27,6 @@ public class DuetState {
             String register;
             String another;
             switch (instructionName) {
-                case "snd":
-                    instruction = new Snd(tokenizer.nextToken());
-                    break;
                 case "set":
                     register = tokenizer.nextToken();
                     another = tokenizer.nextToken();
@@ -40,13 +36,13 @@ public class DuetState {
                         instruction = new SetLiteral(register, Long.parseLong(another));
                     }
                     break;
-                case "add":
+                case "sub":
                     register = tokenizer.nextToken();
                     another = tokenizer.nextToken();
                     if (another.matches(".*[a-zA-Z]+.*")) {
                         instruction = new SubFromRegister(register, another);
                     } else {
-                        instruction = new AddLiteral(register, Long.parseLong(another));
+                        instruction = new SubLiteral(register, Long.parseLong(another));
                     }
                     break;
                 case "mul":
@@ -58,16 +54,7 @@ public class DuetState {
                         instruction = new MulLiteral(register, Long.parseLong(another));
                     }
                     break;
-                case "mod":
-                    register = tokenizer.nextToken();
-                    another = tokenizer.nextToken();
-                    if (another.matches(".*[a-zA-Z]+.*")) {
-                        instruction = new ModFromRegister(register, another);
-                    } else {
-                        instruction = new ModLiteral(register, Long.parseLong(another));
-                    }
-                    break;
-                case "jgz":
+                case "jnz":
                     register = tokenizer.nextToken();
                     another = tokenizer.nextToken();
                     if (another.matches(".*[a-zA-Z]+.*")) {
@@ -76,8 +63,6 @@ public class DuetState {
                         instruction = new JgzLiteral(register, Long.parseLong(another));
                     }
                     break;
-                case "rcv":
-                    instruction = new Rcv(tokenizer.nextToken());
             }
             instructionList.add(instruction);
         }
@@ -94,22 +79,9 @@ public class DuetState {
         registers.put(register, value);
     }
 
-    public void addToPlayed(Long val) {
-        this.played.add(val);
-    }
-
-    public void recover() {
-        if (played.size() > 0)
-        recovered.add(played.get(played.size() - 1));
-    }
-
     public void jump(Long jumpSize) {
         current += jumpSize;
         jumped = true;
-    }
-
-    public Long getFirstReceived() {
-        return recovered.get(0);
     }
 
     public boolean hasNext() {
@@ -120,18 +92,7 @@ public class DuetState {
     }
 
     public void doInstruction() {
-        if (current >= instructionList.size()) {
-            stopped = true;
-            return;
-        }
         Instruction instruction = instructionList.get(current);
-        if (instruction instanceof Rcv) {
-            int cnt = getCnt();
-            if (cnt == 0) {
-                stopped = true;
-                return;
-            }
-        }
         instruction.apply(this);
         instruction.print();
         System.out.println(registers);
@@ -143,22 +104,18 @@ public class DuetState {
     }
 
     public boolean canFinish() {
-        return recovered.size() > 0;
-    }
-
-    public boolean isStopped() {
-        return stopped;
-    }
-
-    public int getCnt() {
-        if (id == 0L) {
-            return SendReceiveQueue.getInstance().getFirstCount();
-        } else {
-            return SendReceiveQueue.getInstance().getSecondCount();
-        }
+        return !hasNext();
     }
 
     public long getId() {
         return id;
+    }
+
+    public Long getNumberOfMultiplies() {
+        return mulCnt;
+    }
+
+    public long getH() {
+        return registers.get("h");
     }
 }

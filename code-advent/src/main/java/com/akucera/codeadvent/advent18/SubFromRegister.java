@@ -1,9 +1,9 @@
 package com.akucera.codeadvent.advent18;
 
-public class AddFromRegister extends Instruction {
+public class SubFromRegister extends Instruction {
     private final String fromRegister;
 
-    public AddFromRegister(String register, String fromRegister) {
+    public SubFromRegister(String register, String fromRegister) {
         super(register);
         this.fromRegister = fromRegister;
     }

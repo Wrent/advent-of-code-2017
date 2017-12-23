@@ -22,6 +22,8 @@ import com.akucera.codeadvent.advent18.Duet;
 import com.akucera.codeadvent.advent19.PacketMaze;
 import com.akucera.codeadvent.advent20.Particles;
 import com.akucera.codeadvent.advent21.ComputerArt;
+import com.akucera.codeadvent.advent22.BurstVirus;
+import com.akucera.codeadvent.advent23.Coprocessor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -7992,11 +7994,11 @@ public class CodeAdventApplication implements CommandLineRunner {
 				"p=<378,2768,1004>, v=<51,395,147>, a=<-3,-26,-15>\n" +
 				"p=<-2667,-1543,1410>, v=<-382,-221,200>, a=<29,16,-16>";
 		final Particles particles = new Particles(particlesInput);
-		particles.doIterations(10000);
+//		particles.doIterations(10000);
 		System.out.println("Closest particle is : " + particles.getClosestToZero());
 
 		final Particles particlesWithCollisions = new Particles(particlesInput);
-		particlesWithCollisions.doIterationsWithCollisions(10000);
+//		particlesWithCollisions.doIterationsWithCollisions(10000);
 		System.out.println("Number of particles is: " + particlesWithCollisions.countParticles());
 
 
@@ -8113,6 +8115,86 @@ public class CodeAdventApplication implements CommandLineRunner {
 		System.out.println(computerArt.countPixelsOn(computerArtInput, 5));
 		computerArt = new ComputerArt();
 		System.out.println("Computer art result bigger is:");
-		System.out.println(computerArt.countPixelsOn(computerArtInput, 18));
+//		System.out.println(computerArt.countPixelsOn(computerArtInput, 18));
+
+		final String burstVirusInput = "....##.#.#.#...#.##.##.#.\n" +
+				"##.####..###..#.#.#.###.#\n" +
+				".#.#...#.##....#......###\n" +
+				"...#.....##.###....##.###\n" +
+				"#.########.#.#####..##.#.\n" +
+				".#..#..#.#..#....##.#...#\n" +
+				".....#.##..#.#.....##..##\n" +
+				"....###....###....###.#..\n" +
+				"..#..#..#..#.##.#.#..##.#\n" +
+				".##......#...##.#.#.##.#.\n" +
+				".#####.#.#.##...###...#..\n" +
+				"#..###..#....#....##..#..\n" +
+				"###..#....#.##.##.....#..\n" +
+				"##.##..#.##.#..#####.#.#.\n" +
+				"#....#.######.#.#.#.##.#.\n" +
+				"###.##.#.######.#..###.#.\n" +
+				"#...###.#.#..##..####....\n" +
+				"###...##.###..###..##..#.\n" +
+				"..##.###...#.....##.##.##\n" +
+				"..##..#.###.###.....#.###\n" +
+				"#..###.##.#.###......####\n" +
+				"#.#...#..##.###.....##.#.\n" +
+				"#..#.##...##.##....#...#.\n" +
+				"..#.#..#..#...##.#..###..\n" +
+				"......###....#.....#....#";
+		BurstVirus burstVirus = new BurstVirus();
+		System.out.println("burst virus result is :");
+//		System.out.println(burstVirus.countInfectingBursts(burstVirusInput, 10000));
+		burstVirus = new BurstVirus();
+//		System.out.println(burstVirus.countInfectingBurstsEvolved(burstVirusInput, 10000000));
+
+		final String coprocessorInput = "set b 81\n" +
+				"set c b\n" +
+				"jnz a 2\n" +
+				"jnz 1 5\n" +
+				"mul b 100\n" +
+				"sub b -100000\n" +
+				"set c b\n" +
+				"sub c -17000\n" +
+				"set f 1\n" +
+				"set d 2\n" +
+				"set e 2\n" +
+				"set g d\n" +
+				"mul g e\n" +
+				"sub g b\n" +
+				"jnz g 2\n" +
+				"set f 0\n" +
+				"sub e -1\n" +
+				"set g e\n" +
+				"sub g b\n" +
+				"jnz g -8\n" +
+				"sub d -1\n" +
+				"set g d\n" +
+				"sub g b\n" +
+				"jnz g -13\n" +
+				"jnz f 2\n" +
+				"sub h -1\n" +
+				"set g b\n" +
+				"sub g c\n" +
+				"jnz g 2\n" +
+				"jnz 1 3\n" +
+				"sub b -17\n" +
+				"jnz 1 -23";
+		Coprocessor coprocessor = new Coprocessor();
+		System.out.println("Coprocessor result is: ");
+//		System.out.println(coprocessor.getNumberOfMultiplies(coprocessorInput));
+		coprocessor = new Coprocessor();
+		String coprocessorOptimized = "set g 1\n" +
+				"set b 108100\n" +
+				"set c 125100\n" +
+				"sub g b // B\n" +
+				"sub h -1 //only H changing\n" +
+				"set g b // decrease g with B\n" +
+				"sub g c // decrease g with C\n" +
+				"jnz g 2 // we need g to be 0\n" +
+				"jnz 1 3 //finish\n" +
+				"sub b -17\n" +
+				"jnz 1 -8  //jumps to 9";
+		System.out.println(coprocessor.getValueH(coprocessorOptimized));
 	}
 }
