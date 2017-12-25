@@ -25,6 +25,7 @@ import com.akucera.codeadvent.advent21.ComputerArt;
 import com.akucera.codeadvent.advent22.BurstVirus;
 import com.akucera.codeadvent.advent23.Coprocessor;
 import com.akucera.codeadvent.advent24.MagneticBridge;
+import com.akucera.codeadvent.advent25.TuringMachine;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8256,8 +8257,12 @@ public class CodeAdventApplication implements CommandLineRunner {
 				"19/32";
 		MagneticBridge magneticBridge = new MagneticBridge();
 		System.out.println("bridge result is");
-		System.out.println(magneticBridge.getStrongestStrength(bridgeInput));
+//		System.out.println(magneticBridge.getStrongestStrength(bridgeInput));
 		magneticBridge = new MagneticBridge();
-		System.out.println(magneticBridge.getLongestStrength(bridgeInput));
+//		System.out.println(magneticBridge.getLongestStrength(bridgeInput));
+
+		TuringMachine turingMachine = new TuringMachine();
+		System.out.println("turing machine checksum is: ");
+		System.out.println(turingMachine.doIterations(12964419));
 	}
 }
